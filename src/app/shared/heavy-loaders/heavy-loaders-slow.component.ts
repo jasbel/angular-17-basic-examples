@@ -1,0 +1,19 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-heavy-loaders-slow',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+  <h1 [ngClass]="['w-full h-[600px]', cssClass]">hheavey slowo</h1>`,
+  styles: ``
+})
+export class HeavyLoadersSlowComponent {
+  @Input({required: true}) cssClass!: string
+  constructor() {
+    const start = Date.now();
+
+    while(Date.now() - start < 3000) {}
+  }
+}
